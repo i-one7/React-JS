@@ -1,13 +1,10 @@
+import Container from './components/Container';
 import React from 'react';
-import State from './hooks/useState';
-
 
 const App = () => {
 	return (
-		<State/>
+		<Container></Container>
 	);
 };
-
-
 
 export default App;
