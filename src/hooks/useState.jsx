@@ -1,40 +1,52 @@
 /**
  * ^USESTATE
+ * digunakan untuk membuat state pada functional component
+ * fungsi useState akan mereturn pasangan nilai dari state function untuk mengubah state tersebut dalam bentuk sebuah array
+ * dimana item pertama merupakan state (yaah saya asumsikan disini sebagai varibel yang memiliki nilai awal. entah itu string, bool, number, obj dll)
+ * item kedua merupakan fungsi (function) yang digunakan untuk memanipulasi state itu sendiri.
+ * biasanya useState dideklarasikan menggunakan destructuring array : let [values, setValues] = useState('this is values')
  */
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
+import { Button, Cards } from '../components/@index';
 
 const State = () => {
 	const [ counter, setCounter ] = useState(0);
 	const [ food, setFood ] = useState({
-		name: [ 'ayam mati' ],
+		name: [ 'Soto Betawi' ],
 		val: null
 	});
-	
-	const addFood = () => setFood({
+
+	const addFood = e => {
+		e.preventDefault();
+		e.target.reset();
+		setFood({
 			...food,
 			name: [ ...food.name, food.val ]
 		});
+	};
 
 	return (
 		<>
-			<h1>Counter : {counter}</h1>
-			<button onClick={() => setCounter(counter + 1)}> increment </button>
-			<button disabled={counter <= 0 ? true : false} onClick={() => setCounter(counter - 1)} > decrement </button>
+			<h2>Counter : {counter}</h2>
+			<div className={'separate spacing'}>
+				<Button click={() => setCounter(counter + 1)}>👆🏼</Button>
+				<Button
+					click={() => setCounter(counter - 1)}
+					disable={counter >= 1 ? false : true}
+				>👇🏼</Button>
+			</div>
 
-			<br />
-			<br />
-
-			<h1> Food list</h1>
-			<button onClick={() => addFood()}>add</button>
-			<input placeholder='food here' onChange={ e => setFood({...food, val : e.target.value})}/>
-			<ol>
-				{
-					food.name.map((v, i) => {
-						return <li key={i}>{v}</li>;
-					})
-				}
-			</ol>
+			<h2>Food List</h2>
+			<form onSubmit={addFood} className={'separate spacing'}>
+				<Button type="submit">👊🏼</Button>
+				<input
+					type='text'
+					placeholder='insert here'
+					onChange={e => setFood({ ...food, val: e.target.value })}
+				/>
+			</form>
+			{ food.name.map((v, i) => <Cards key={i}>{v}</Cards>) }
 		</>
 	);
 };

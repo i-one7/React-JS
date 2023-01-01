@@ -18,6 +18,9 @@
     ],
     "rules": {
         "semi": "error",
-        "semi-style": "error"
+        "semi-style": "error",
+        "react/no-children-prop": [<enabled>, {
+            "allowFunctions": <boolean> || false
+        }]
     }
 }
