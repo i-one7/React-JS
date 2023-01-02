@@ -1,8 +1,8 @@
 /**
  * ^EFFECT CLEANUP FUNCTION
  * cleanup up pada useEffect bisa diasumsikan sebagai cara untuk menghentikan side effect yang tidak dibutuhkan namun terus dieksekusi. dan salah satu alasan umum useEffect menjadi tidak relevan dalah ketika unmounted.
- * contoh : kita memesan makanan dilokasi A, dan secara tiba2 kita pindah ke lokasi B. makanan tetap datang ke lokasi A sedangkan kita sudah berada di lokasi B. Sekarang untuk apa makanan itu? tentu buang-buang duid dong. sebagai konsep cleanup, kita bisa membatalkan pesanan tersebut sebelum pindah dari lokasi A ke lokasi B.
- * https://jsonplaceholder.typicode.com/users
+ * contoh : kita memesan makanan dilokasi A, dan kemudian kita pindah ke lokasi B. makanan tetap datang ke lokasi A sedangkan kita sudah berada di lokasi B. Sekarang untuk apa makanan itu? tentu buang-buang duid dong. sebagai konsep cleanup, kita bisa membatalkan pesanan tersebut sebelum pindah dari lokasi A ke lokasi B.
+ * 
  */
 
 import React,{useState, useEffect} from 'react';
